@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <div class="sidebar-brand">
             <img src="../../../images/cec-logo.png" alt="Cebu Eastern College logo">
             <strong>CEC</strong>
-            <span>STUDENT PORTAL SYSTEM</span>
+            <span>REGISTRAR PORTAL SYSTEM</span>
         </div>
 
         <nav class="sidebar-nav" aria-label="Registrar navigation">
@@ -37,21 +37,29 @@
     <main class="dashboard-main">
         <header class="app-header">
             <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
-            <h1 class="app-title">Registrar Dashboard</h1>
 
-            <label class="app-search">
-                <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Search anything</span>
+            <label class="search-box">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" placeholder="Search anything...">
+                <input type="search" placeholder="Search subjects, records, or anything..." aria-label="Search">
             </label>
 
-            <div class="app-user">
-                <span class="app-user-avatar">&mdash;</span>
-                <span class="app-user-text">
-                    <strong>&nbsp;</strong>
+            <select class="semester-select" aria-label="Semester">
+                <option selected>1st Semester</option>
+                <option>2nd Semester</option>
+            </select>
+
+            <button class="header-icon" type="button" aria-label="Notifications">
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <span class="notif-dot"></span>
+            </button>
+
+            <button class="profile-button" type="button">
+                <span class="profile-avatar">&mdash;</span>
+                <span class="profile-info">
+                    <strong></strong>
                     <small>Registrar</small>
                 </span>
-            </div>
+            </button>
         </header>
 
         <section class="settings-content">
@@ -64,10 +72,10 @@
                     <span>Security</span>
                 </nav>
                 <div class="page-title">
-                    <span class="page-title-icon"><i class="fa-solid fa-gear"></i></span>
+                    <span class="page-title-icon"><i class="fa-solid fa-shield-halved"></i></span>
                     <div>
-                        <h1>Settings</h1>
-                        <p class="page-desc">Manage your account, security, notification and preferences.</p>
+                        <h1>Security</h1>
+                        <p class="page-desc">Review your password and login alert protections.</p>
                     </div>
                 </div>
             </div>
@@ -82,7 +90,7 @@
                     <a href="login-history.html"><i class="fa-solid fa-clock-rotate-left"></i> Login History</a>
                 </nav>
 
-                <div>
+                <div class="settings-panel active">
                     <section class="setting-card" aria-label="Security overview">
                         <div class="setting-title">
                             <h3><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Security</h3>
@@ -93,7 +101,7 @@
                                 <span class="row-icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
                                 <div class="row-text">
                                     <strong>Password</strong>
-                                    <small></small>
+                                    <small>Use a strong, unique password and change it regularly.</small>
                                 </div>
                                 <span class="row-end">
                                     <a class="btn btn-outline" href="change-password.html"><i class="fa-solid fa-pen" aria-hidden="true"></i> Change Password</a>
@@ -106,10 +114,17 @@
                                     <small>Get notified of new logins to your account.</small>
                                 </div>
                                 <span class="row-end">
-                                    <a class="link-pill" href="login-alerts.html"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                                    <a class="link-pill" href="login-alerts.html" aria-label="Manage login alerts"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                                 </span>
                             </div>
                         </div>
+                    </section>
+
+                    <section class="setting-card" aria-label="Quick tips">
+                        <div class="setting-title">
+                            <h3><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Safety Tips</h3>
+                        </div>
+                        <p class="form-hint">Never share your password or one-time codes. CEC staff will never ask for them. Review <a href="login-history.html">Login History</a> if you notice unfamiliar sign-in activity.</p>
                     </section>
                 </div>
             </div>
@@ -124,5 +139,7 @@
             });
         })();
     </script>
+    <script src="../../js/notificationMenu.js"></script>
+    <script src="../../js/profileMenu.js"></script>
 </body>
 </html>

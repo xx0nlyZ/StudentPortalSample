@@ -45,27 +45,39 @@ body {
     border-bottom-color: var(--border);
 }
 
-.theme-dark .app-title,
 .theme-dark .menu-toggle {
     color: var(--text);
 }
 
-.theme-dark .app-search input {
+.theme-dark .menu-toggle:hover {
+    background: var(--pale-blue);
+}
+
+.theme-dark .search-box {
+    background: var(--pale-blue);
+}
+
+.theme-dark .search-box input {
+    color: var(--text);
+}
+
+.theme-dark .search-box i {
+    color: var(--muted);
+}
+
+.theme-dark .semester-select {
     color: var(--text);
     background: var(--card);
     border-color: var(--border);
 }
 
-.theme-dark .app-search input:focus {
-    background: var(--card);
+.theme-dark .header-icon,
+.theme-dark .profile-button {
+    color: var(--text);
 }
 
-.theme-dark .app-user {
-    background: var(--card);
-    border-color: var(--border);
-}
-
-.theme-dark .app-user strong {
+.theme-dark .profile-info strong,
+.theme-dark .profile-info small {
     color: var(--text);
 }
 
@@ -254,7 +266,8 @@ body {
     margin-bottom: 18px;
 }
 
-.setting-card > .setting-title h3 {
+.setting-card > .setting-title h3,
+.setting-card > .setting-title h1 {
     display: flex;
     align-items: center;
     gap: 9px;
@@ -264,9 +277,15 @@ body {
     color: var(--navy);
 }
 
-.setting-card > .setting-title h3 i {
+.setting-card > .setting-title h3 i,
+.setting-card > .setting-title h1 i {
     color: var(--blue);
     font-size: 15px;
+}
+
+.theme-dark .setting-card > .setting-title h3,
+.theme-dark .setting-card > .setting-title h1 {
+    color: var(--text);
 }
 
 /* --------------------------------------------------------------------------
@@ -1105,6 +1124,10 @@ body {
 .toast i {
     color: #7EE3A0;
     font-size: 15px;
+}
+
+.toast.toast-error i {
+    color: #FF9C90;
 }
 
 .toast.show {

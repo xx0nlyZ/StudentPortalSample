@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <div class="sidebar-brand">
             <img src="../../../images/cec-logo.png" alt="Cebu Eastern College logo">
             <strong>CEC</strong>
-            <span>STUDENT PORTAL SYSTEM</span>
+            <span>REGISTRAR PORTAL SYSTEM</span>
         </div>
 
         <nav class="sidebar-nav" aria-label="Registrar navigation">
@@ -37,21 +37,29 @@
     <main class="dashboard-main">
         <header class="app-header">
             <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
-            <h1 class="app-title">Registrar Dashboard</h1>
 
-            <label class="app-search">
-                <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Search anything</span>
+            <label class="search-box">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" placeholder="Search anything...">
+                <input type="search" placeholder="Search subjects, records, or anything..." aria-label="Search">
             </label>
 
-            <div class="app-user">
-                <span class="app-user-avatar">—</span>
-                <span class="app-user-text">
+            <select class="semester-select" aria-label="Semester">
+                <option selected>1st Semester</option>
+                <option>2nd Semester</option>
+            </select>
+
+            <button class="header-icon" type="button" aria-label="Notifications">
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <span class="notif-dot"></span>
+            </button>
+
+            <button class="profile-button" type="button">
+                <span class="profile-avatar">&mdash;</span>
+                <span class="profile-info">
                     <strong></strong>
                     <small>Registrar</small>
                 </span>
-            </div>
+            </button>
         </header>
 
         <section class="doc-content">
@@ -136,5 +144,7 @@
             });
         })();
     </script>
+    <script src="../../js/notificationMenu.js"></script>
+    <script src="../../js/profileMenu.js"></script>
 </body>
 </html>

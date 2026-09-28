@@ -67,7 +67,8 @@
     border-bottom: 1px solid #E3E9F2;
 }
 
-.announce-summary-head h3 {
+.announce-summary-head h3,
+.announce-summary-head h1 {
     display: flex;
     align-items: center;
     gap: 9px;
@@ -75,7 +76,8 @@
     font-size: 16px;
 }
 
-.announce-summary-head h3 i {
+.announce-summary-head h3 i,
+.announce-summary-head h1 i {
     color: var(--blue);
     font-size: 16px;
 }

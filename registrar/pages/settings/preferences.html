@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <div class="sidebar-brand">
             <img src="../../../images/cec-logo.png" alt="Cebu Eastern College logo">
             <strong>CEC</strong>
-            <span>STUDENT PORTAL SYSTEM</span>
+            <span>REGISTRAR PORTAL SYSTEM</span>
         </div>
 
         <nav class="sidebar-nav" aria-label="Registrar navigation">
@@ -37,21 +37,29 @@
     <main class="dashboard-main">
         <header class="app-header">
             <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
-            <h1 class="app-title">Registrar Dashboard</h1>
 
-            <label class="app-search">
-                <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Search anything</span>
+            <label class="search-box">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" placeholder="Search anything...">
+                <input type="search" placeholder="Search subjects, records, or anything..." aria-label="Search">
             </label>
 
-            <div class="app-user">
-                <span class="app-user-avatar">&mdash;</span>
-                <span class="app-user-text">
-                    <strong>&nbsp;</strong>
+            <select class="semester-select" aria-label="Semester">
+                <option selected>1st Semester</option>
+                <option>2nd Semester</option>
+            </select>
+
+            <button class="header-icon" type="button" aria-label="Notifications">
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <span class="notif-dot"></span>
+            </button>
+
+            <button class="profile-button" type="button">
+                <span class="profile-avatar">&mdash;</span>
+                <span class="profile-info">
+                    <strong></strong>
                     <small>Registrar</small>
                 </span>
-            </div>
+            </button>
         </header>
 
         <section class="settings-content">
@@ -64,10 +72,10 @@
                     <span>Preferences</span>
                 </nav>
                 <div class="page-title">
-                    <span class="page-title-icon"><i class="fa-solid fa-gear"></i></span>
+                    <span class="page-title-icon"><i class="fa-solid fa-sliders"></i></span>
                     <div>
-                        <h1>Settings</h1>
-                        <p class="page-desc">Manage your account, security, notification and preferences.</p>
+                        <h1>Preferences</h1>
+                        <p class="page-desc">Set your language, date format, and portal appearance.</p>
                     </div>
                 </div>
             </div>
@@ -82,8 +90,8 @@
                     <a href="login-history.html"><i class="fa-solid fa-clock-rotate-left"></i> Login History</a>
                 </nav>
 
-                <div>
-                    <section class="setting-card" aria-label="Preferences">
+                <div class="settings-panel active">
+                    <section class="setting-card" aria-label="Regional preferences">
                         <div class="setting-title">
                             <h3><i class="fa-solid fa-sliders" aria-hidden="true"></i> Preferences</h3>
                         </div>
@@ -96,10 +104,10 @@
                                     <small>Choose your preferred language.</small>
                                 </div>
                                 <div class="pref-control">
-                                    <select class="filter-select" aria-label="Select language">
-                                        <option>English</option>
-                                        <option>Bisaya (Cebuano)</option>
-                                        <option>Tagalog</option>
+                                    <select class="filter-select" id="language" aria-label="Select language">
+                                        <option value="en">English</option>
+                                        <option value="ceb">Bisaya (Cebuano)</option>
+                                        <option value="tl">Tagalog</option>
                                     </select>
                                 </div>
                             </div>
@@ -110,10 +118,10 @@
                                     <small>Choose your preferred date format.</small>
                                 </div>
                                 <div class="pref-control">
-                                    <select class="filter-select" aria-label="Select date format">
-                                        <option>MM/DD/YYYY</option>
-                                        <option>DD/MM/YYYY</option>
-                                        <option>YYYY-MM-DD</option>
+                                    <select class="filter-select" id="date-format" aria-label="Select date format">
+                                        <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                        <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                        <option value="YYYY-MM-DD">YYYY-MM-DD</option>
                                     </select>
                                 </div>
                             </div>
@@ -129,13 +137,13 @@
                         <small>Customize the look and feel of your portal.</small>
 
                         <div class="settings-subhead">Theme Selection</div>
-                        <div class="theme-choices">
-                            <div class="theme-card">
+                        <div class="theme-choices" id="theme-choices">
+                            <div class="theme-card active" data-theme="light">
                                 <i class="fa-solid fa-sun" aria-hidden="true"></i>
                                 <strong>Light Mode</strong>
                                 <span class="radio-dot"></span>
                             </div>
-                            <div class="theme-card">
+                            <div class="theme-card" data-theme="dark">
                                 <i class="fa-solid fa-moon" aria-hidden="true"></i>
                                 <strong>Dark Mode</strong>
                                 <span class="radio-dot"></span>
@@ -143,19 +151,19 @@
                         </div>
 
                         <div class="settings-subhead">Color Scheme</div>
-                        <div class="color-dot-row">
-                            <button type="button" class="color-dot blue" aria-label="Blue"></button>
-                            <button type="button" class="color-dot purple" aria-label="Purple"></button>
-                            <button type="button" class="color-dot green" aria-label="Green"></button>
-                            <button type="button" class="color-dot yellow" aria-label="Yellow"></button>
-                            <button type="button" class="color-dot red" aria-label="Red"></button>
+                        <div class="color-dot-row" id="color-scheme">
+                            <button type="button" class="color-dot blue selected" data-color="blue" aria-label="Blue"></button>
+                            <button type="button" class="color-dot purple" data-color="purple" aria-label="Purple"></button>
+                            <button type="button" class="color-dot green" data-color="green" aria-label="Green"></button>
+                            <button type="button" class="color-dot yellow" data-color="yellow" aria-label="Yellow"></button>
+                            <button type="button" class="color-dot red" data-color="red" aria-label="Red"></button>
                         </div>
 
                         <div class="settings-subhead">Font Size</div>
-                        <div class="segmented">
-                            <button type="button">Small</button>
-                            <button type="button">Medium</button>
-                            <button type="button">Large</button>
+                        <div class="segmented" id="font-size-group">
+                            <button type="button" data-font="14">Small</button>
+                            <button type="button" data-font="16" class="active">Medium</button>
+                            <button type="button" data-font="18">Large</button>
                         </div>
                     </section>
                 </div>
@@ -163,6 +171,7 @@
         </section>
     </main>
 
+    <script src="../../js/preferences.js"></script>
     <script>
         (function () {
             var toggle = document.getElementById('menu-toggle');
@@ -171,5 +180,7 @@
             });
         })();
     </script>
+    <script src="../../js/notificationMenu.js"></script>
+    <script src="../../js/profileMenu.js"></script>
 </body>
 </html>

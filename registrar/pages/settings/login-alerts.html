@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <div class="sidebar-brand">
             <img src="../../../images/cec-logo.png" alt="Cebu Eastern College logo">
             <strong>CEC</strong>
-            <span>STUDENT PORTAL SYSTEM</span>
+            <span>REGISTRAR PORTAL SYSTEM</span>
         </div>
 
         <nav class="sidebar-nav" aria-label="Registrar navigation">
@@ -37,21 +37,29 @@
     <main class="dashboard-main">
         <header class="app-header">
             <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
-            <h1 class="app-title">Registrar Dashboard</h1>
 
-            <label class="app-search">
-                <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Search anything</span>
+            <label class="search-box">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" placeholder="Search anything...">
+                <input type="search" placeholder="Search subjects, records, or anything..." aria-label="Search">
             </label>
 
-            <div class="app-user">
-                <span class="app-user-avatar">&mdash;</span>
-                <span class="app-user-text">
-                    <strong>&nbsp;</strong>
+            <select class="semester-select" aria-label="Semester">
+                <option selected>1st Semester</option>
+                <option>2nd Semester</option>
+            </select>
+
+            <button class="header-icon" type="button" aria-label="Notifications">
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <span class="notif-dot"></span>
+            </button>
+
+            <button class="profile-button" type="button">
+                <span class="profile-avatar">&mdash;</span>
+                <span class="profile-info">
+                    <strong></strong>
                     <small>Registrar</small>
                 </span>
-            </div>
+            </button>
         </header>
 
         <section class="settings-content">
@@ -63,8 +71,15 @@
                     <i class="fa-solid fa-chevron-right"></i>
                     <a href="security.html">Security</a>
                     <i class="fa-solid fa-chevron-right"></i>
-                    <span>Login Alert</span>
+                    <span>Login Alerts</span>
                 </nav>
+                <div class="page-title">
+                    <span class="page-title-icon"><i class="fa-solid fa-bell"></i></span>
+                    <div>
+                        <h1>Login Alerts</h1>
+                        <p class="page-desc">Choose how you get notified when your account is accessed.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="settings-layout">
@@ -77,42 +92,45 @@
                     <a href="login-history.html"><i class="fa-solid fa-clock-rotate-left"></i> Login History</a>
                 </nav>
 
-                <section class="setting-card" aria-label="Login alert preferences">
-                    <div class="setting-title">
-                        <h3><i class="fa-solid fa-bell" aria-hidden="true"></i> Login Alert</h3>
-                    </div>
-
-                    <div class="checkbox-list">
-                        <label class="checkbox-option">
-                            <input type="checkbox">
-                            <span class="opt-text"><strong>New device login</strong></span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox">
-                            <span class="opt-text"><strong>Unfamiliar location login</strong></span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox">
-                            <span class="opt-text"><strong>Every login activity</strong></span>
-                        </label>
-                    </div>
-
-                    <div class="alerts-input-row">
-                        <div class="form-group">
-                            <label for="alert-email">Target Email Address</label>
-                            <input type="email" id="alert-email" value="">
+                <div class="settings-panel active">
+                    <section class="setting-card" aria-label="Login alert preferences">
+                        <div class="setting-title">
+                            <h3><i class="fa-solid fa-bell" aria-hidden="true"></i> Login Alert</h3>
                         </div>
-                        <div class="alerts-btn">
-                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Save Alert Preferences</button>
-                        </div>
-                    </div>
 
-                    <p class="warning-foot">Get notified instantly <b>if someone accesses your account</b>.</p>
-                </section>
+                        <div class="checkbox-list">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="alert-new-device">
+                                <span class="opt-text"><strong>New device login</strong><small>Alert me when my account is used on a device I do not recognize.</small></span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="alert-unfamiliar-location">
+                                <span class="opt-text"><strong>Unfamiliar location login</strong><small>Alert me when sign-in comes from a new location.</small></span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="alert-every-activity">
+                                <span class="opt-text"><strong>Every login activity</strong><small>Send an alert for every successful sign-in.</small></span>
+                            </label>
+                        </div>
+
+                        <div class="alerts-input-row">
+                            <div class="form-group">
+                                <label for="alert-email">Target Email Address</label>
+                                <input type="email" id="alert-email" value="" placeholder="alerts@example.com">
+                            </div>
+                            <div class="alerts-btn">
+                                <button type="button" class="btn btn-primary" id="save-alerts-btn"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Save Alert Preferences</button>
+                            </div>
+                        </div>
+
+                        <p class="warning-foot">Get notified instantly <b>if someone accesses your account</b>.</p>
+                    </section>
+                </div>
             </div>
         </section>
     </main>
 
+    <script src="../../js/login-alerts.js"></script>
     <script>
         (function () {
             var toggle = document.getElementById('menu-toggle');
@@ -121,5 +139,7 @@
             });
         })();
     </script>
+    <script src="../../js/notificationMenu.js"></script>
+    <script src="../../js/profileMenu.js"></script>
 </body>
 </html>
