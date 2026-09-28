@@ -187,21 +187,6 @@ a {
     font-size: 13px;
 }
 
-.semester-select {
-    height: 34px;
-    padding: 0 10px;
-    border: 1px solid #D5DEE9;
-    border-radius: 6px;
-    outline: none;
-    color: var(--navy);
-    background: #FFFFFF;
-    font-size: 13px;
-}
-
-.semester-select:focus {
-    border-color: var(--blue);
-}
-
 .header-icon,
 .profile-button {
     border: 0;
