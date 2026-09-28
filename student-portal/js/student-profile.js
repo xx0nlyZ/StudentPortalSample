@@ -1,24 +1,39 @@
-const profileTabs = document.querySelectorAll('.profile-tabs a');
-const profileSections = document.querySelectorAll('.profile-tab-content');
-const profileNote = document.querySelector('#profile-note');
+(function () {
+    'use strict';
 
-profileTabs.forEach((tab) => {
-    tab.addEventListener('click', (event) => {
-        event.preventDefault();
+    if (window.__CECStudentProfile) return;
+    window.__CECStudentProfile = true;
 
-        profileTabs.forEach((item) => item.classList.remove('active'));
-        profileSections.forEach((section) => {
-            section.hidden = true;
+    var tabs = document.querySelectorAll('.profile-tabs a');
+    var panels = document.querySelectorAll('.profile-tab-content');
+    var note = document.getElementById('profile-note');
+    var defaultNote = note ? note.textContent.trim() : '';
+
+    function activate(tab) {
+        Array.prototype.forEach.call(tabs, function (item) {
+            item.classList.remove('active');
+        });
+
+        Array.prototype.forEach.call(panels, function (panel) {
+            panel.hidden = true;
         });
 
         tab.classList.add('active');
-        const target = document.querySelector(tab.getAttribute('href'));
+
+        var target = document.querySelector(tab.getAttribute('href'));
         if (target) {
             target.hidden = false;
         }
 
-        if (profileNote) {
-            profileNote.textContent = tab.dataset.note || "For changes in personal data, please submit a request to the Registrar's Office.";
+        if (note) {
+            note.textContent = tab.getAttribute('data-note') || defaultNote;
         }
+    }
+
+    Array.prototype.forEach.call(tabs, function (tab) {
+        tab.addEventListener('click', function (event) {
+            event.preventDefault();
+            activate(tab);
+        });
     });
-});
+})();

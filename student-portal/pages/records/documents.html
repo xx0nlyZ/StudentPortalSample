@@ -1,114 +1,238 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documents | CEC Student Portal</title>
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="../../css/student-section.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents | Cebu Eastern College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../../css/student-section.css">
 </head>
-<body class="section-page">
+<body class="dashboard-page">
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <img src="../../../images/cec-logo.png" alt="Cebu Eastern College logo">
+            <strong>CEC</strong>
+            <span>STUDENT PORTAL</span>
+        </div>
 
-  <!-- Sidebar -->
-  <aside class="section-sidebar">
-    <div class="section-brand">
-      <img src="../../../images/cec-logo.png" alt="CEC logo">
-      <strong>CEC</strong>
-      <span>STUDENT PORTAL</span>
-    </div>
+        <nav class="sidebar-nav" aria-label="Student navigation">
+            <div class="nav-section">Overview</div>
+            <a href="../dashboard/student-dashboard.html"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></a>
 
-    <nav class="section-nav">
-      <a href="../dashboard/student-dashboard.html">
-        <i class="fa-solid fa-house"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="student-profile.html">
-        <i class="fa-regular fa-user"></i>
-        <span>My Profile</span>
-      </a>
-      <a href="enrollment.html">
-        <i class="fa-regular fa-file-lines"></i>
-        <span>Enrollment</span>
-      </a>
-      <a href="../grades/grades.html">
-        <i class="fa-solid fa-chart-simple"></i>
-        <span>Grades</span>
-      </a>
-      <a href="financial.html">
-        <i class="fa-regular fa-credit-card"></i>
-        <span>Financial</span>
-      </a>
-      <a href="../classes/class-schedule.html">
-        <i class="fa-regular fa-calendar"></i>
-        <span>Class Schedule</span>
-      </a>
-      <a href="documents.html" class="active">
-        <i class="fa-regular fa-file-lines"></i>
-        <span>Documents</span>
-      </a>
-      <a href="../announcements/announcements.html">
-        <i class="fa-solid fa-volume-high"></i>
-        <span>Announcement</span>
-      </a>
-      <a href="../classes/curriculum.html">
-        <i class="fa-solid fa-pen-ruler"></i>
-        <span>Curriculum</span>
-      </a>
-    </nav>
+            <div class="nav-section">Academics</div>
+            <a href="../classes/class-schedule.html"><i class="fa-regular fa-calendar-day"></i><span>Class Schedule</span></a>
+            <a href="../classes/curriculum.html"><i class="fa-solid fa-pen-ruler"></i><span>Curriculum</span></a>
+            <a href="../grades/grades.html"><i class="fa-solid fa-chart-simple"></i><span>Grades</span></a>
+            <a href="enrollment.html"><i class="fa-regular fa-file-lines"></i><span>Enrollment</span></a>
 
-    <div class="section-bottom">
-      <a href="#">
-        <i class="fa-solid fa-gear"></i>
-        <span>Settings</span>
-      </a>
-      <a href="../auth/student.html">
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <span>Logout</span>
-      </a>
-    </div>
-  </aside>
+            <div class="nav-section">Records</div>
+            <a href="student-profile.html"><i class="fa-regular fa-user"></i><span>My Profile</span></a>
+            <a href="financial.html"><i class="fa-regular fa-credit-card"></i><span>Financial</span></a>
+            <a href="documents.html" class="active"><i class="fa-regular fa-folder-open"></i><span>Documents</span></a>
 
-  <!-- Main Content Area -->
-  <main class="section-main">
+            <div class="nav-section">Campus</div>
+            <a href="../announcements/announcements.html"><i class="fa-solid fa-bullhorn"></i><span>Announcements</span></a>
 
-    <!-- Top Header -->
-    <header class="dashboard-header">
-      <div class="search-box">
-        <input type="search" placeholder="Search" aria-label="Search dashboard">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
+            <div class="nav-section">Personal</div>
+            <a href="../settings/settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+        </nav>
 
-      <button class="header-icon" type="button" aria-label="Notifications">
-        <i class="fa-regular fa-bell"></i>
-      </button>
+        <div class="sidebar-bottom">
+            <a href="../auth/student.html"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Logout</span></a>
+        </div>
+    </aside>
 
-      <button class="profile-button" type="button" aria-label="Open profile menu">
-        <span class="profile-icon"><i class="fa-regular fa-user"></i></span>
-        <i class="fa-solid fa-chevron-down"></i>
-      </button>
-    </header>
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <label class="search-box">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" placeholder="Search subjects, records, or anything...">
+            </label>
 
-    <!-- Page Content -->
-    <section class="section-content">
-      <p class="breadcrumb">
-        Home <i class="fa-solid fa-chevron-right"></i> Documents
-      </p>
+            <select class="semester-select" aria-label="Semester">
+                <option selected>1st Semester | 1st Year</option>
+                <option>2nd Semester | 1st Year</option>
+            </select>
 
-      <h1 class="section-title">Documents</h1>
+            <button class="header-icon" type="button" aria-label="Notifications">
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <span class="notif-dot"></span>
+            </button>
 
-      <!-- Empty State View -->
-      <div class="empty-panel">
-        <i class="fa-regular fa-file-lines"></i>
-        <h2>No documents yet</h2>
-        <p>Your submitted and verified documents will appear here.</p>
-      </div>
-    </section>
+            <button class="profile-button" type="button">
+                <span class="profile-avatar">JD</span>
+                <span class="profile-info">
+                    <strong>Juan Dela Cruz</strong>
+                    <small>Student</small>
+                </span>
+            </button>
+        </header>
 
-  </main>
+        <section class="dashboard-content">
+            <div class="page-head">
+                <div class="head-row">
+                    <div>
+                        <h1>Documents</h1>
+                        <p class="page-desc">Submitted requirements, verified clearances, and downloadable records.</p>
+                    </div>
+                    <div class="head-actions">
+                        <button class="btn btn-primary" type="button" data-toast-onclick="Choose a file to upload" data-toast-type="info">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Upload Document
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="summary-strip" aria-label="Document summary">
+                <div class="summary-item">
+                    <p>Total Documents</p>
+                    <strong>8</strong>
+                    <small>On file with the registrar</small>
+                </div>
+                <div class="summary-item">
+                    <p>Verified</p>
+                    <strong>6</strong>
+                    <small class="green">Cleared and accepted</small>
+                </div>
+                <div class="summary-item">
+                    <p>Expiring Soon</p>
+                    <strong>1</strong>
+                    <small class="red">Medical certificate</small>
+                </div>
+                <div class="summary-item">
+                    <p>For Request</p>
+                    <strong>1</strong>
+                    <small>Transcript of records</small>
+                </div>
+            </section>
+
+            <div class="section-toolbar">
+                <div class="filter-row">
+                    <div class="filter-box">
+                        <label for="doc-status">Status</label>
+                        <select id="doc-status">
+                            <option selected>All Statuses</option>
+                            <option>Verified</option>
+                            <option>Expiring</option>
+                            <option>On Request</option>
+                        </select>
+                    </div>
+                    <div class="filter-box">
+                        <label for="doc-category">Category</label>
+                        <select id="doc-category">
+                            <option selected>All Categories</option>
+                            <option>Enrollment</option>
+                            <option>Clearance</option>
+                            <option>Identification</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card spaced-bottom">
+                <div class="table-heading">
+                    <h3>Document Vault</h3>
+                    <div class="heading-actions">
+                        <button class="btn btn-outline" type="button" data-toast-onclick="All documents downloaded as ZIP" data-toast-type="success">
+                            <i class="fa-solid fa-download"></i> Download All
+                        </button>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Document</th>
+                                <th>Category</th>
+                                <th>Date Submitted</th>
+                                <th>Reference</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Certificate of Registration (COR)</td>
+                                <td class="muted-cell">Enrollment</td>
+                                <td class="muted-cell">Aug 18, 2026</td>
+                                <td class="code-cell">COR-2026-4412</td>
+                                <td><span class="status-badge status-green">Verified</span></td>
+                                <td><button class="btn btn-outline" type="button" data-copy="COR-2026-4412">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>Certificate of Enrollment</td>
+                                <td class="muted-cell">Enrollment</td>
+                                <td class="muted-cell">Aug 18, 2026</td>
+                                <td class="code-cell">COE-2026-4413</td>
+                                <td><span class="status-badge status-green">Verified</span></td>
+                                <td><button class="btn btn-outline" type="button" data-copy="COE-2026-4413">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>Birth Certificate (PSA)</td>
+                                <td class="muted-cell">Identification</td>
+                                <td class="muted-cell">Jul 28, 2026</td>
+                                <td class="code-cell">DOC-2026-1180</td>
+                                <td><span class="status-badge status-green">Verified</span></td>
+                                <td><button class="btn btn-outline" type="button" data-copy="DOC-2026-1180">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>Certificate of Good Moral</td>
+                                <td class="muted-cell">Clearance</td>
+                                <td class="muted-cell">Aug 05, 2026</td>
+                                <td class="code-cell">CGM-2026-2210</td>
+                                <td><span class="status-badge status-green">Verified</span></td>
+                                <td><button class="btn btn-outline" type="button" data-copy="CGM-2026-2210">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>Medical Certificate</td>
+                                <td class="muted-cell">Clearance</td>
+                                <td class="muted-cell">Jun 14, 2026</td>
+                                <td class="code-cell">MED-2026-0775</td>
+                                <td><span class="status-badge status-amber">Expiring Nov 14, 2026</span></td>
+                                <td><button class="btn btn-primary" type="button" data-toast-onclick="Choose a file to upload" data-toast-type="info">Replace</button></td>
+                            </tr>
+                            <tr>
+                                <td>2x2 ID Picture</td>
+                                <td class="muted-cell">Identification</td>
+                                <td class="muted-cell">Jul 28, 2026</td>
+                                <td class="code-cell">IDP-2026-3301</td>
+                                <td><span class="status-badge status-green">Verified</span></td>
+                                <td><button class="btn btn-outline" type="button" data-copy="IDP-2026-3301">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>Student ID</td>
+                                <td class="muted-cell">Identification</td>
+                                <td class="muted-cell">Aug 21, 2026</td>
+                                <td class="code-cell">SID-2024-12345</td>
+                                <td><span class="status-badge status-blue">Active</span></td>
+                                <td><button class="btn btn-outline" type="button" data-toast-onclick="Student ID released for printing" data-toast-type="success">Request</button></td>
+                            </tr>
+                            <tr>
+                                <td>Form 137 / Transcript of Records</td>
+                                <td class="muted-cell">Enrollment</td>
+                                <td class="muted-cell">&mdash;</td>
+                                <td class="muted-cell">&mdash;</td>
+                                <td><span class="status-badge status-amber">On Request</span></td>
+                                <td><button class="btn btn-primary" type="button" data-toast-onclick="Document request submitted to the Registrar" data-toast-type="success">Request</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    <p class="pagination-info">Showing 8 of 8 documents</p>
+                    <div class="pagination">
+                        <button class="page-btn active" type="button">1</button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="note-bar">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                Uploads are reviewed by the registrar within three working days. Requests for certified copies are processed at the
+                <a href="enrollment.html">registrar&apos;s office</a>.
+            </p>
+        </section>
+    </main>
 
 <script src="../../js/showToast.js"></script>
 <script src="../../js/copyToClipboard.js"></script>
@@ -117,5 +241,8 @@
 <script src="../../js/validateForm.js"></script>
 <script src="../../js/persistSelect.js"></script>
 <script src="../../js/setYear.js"></script>
+
+    <script src="../../js/notificationMenu.js"></script>
+    <script src="../../js/profileMenu.js"></script>
 </body>
 </html>

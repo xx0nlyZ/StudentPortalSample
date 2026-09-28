@@ -1,116 +1,256 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Announcements | CEC Student Portal</title>
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="../../css/student-section.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements | Cebu Eastern College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../../css/student-section.css">
 </head>
-<body class="section-page">
-
-  <!-- Sidebar -->
-  <aside class="section-sidebar">
-    <div class="section-brand">
-      <img src="../../../images/cec-logo.png" alt="CEC logo">
-      <strong>CEC</strong>
-      <span>STUDENT PORTAL</span>
-    </div>
-
-    <nav class="section-nav">
-      <a href="../dashboard/student-dashboard.html">
-        <i class="fa-solid fa-house"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="../records/student-profile.html">
-        <i class="fa-regular fa-user"></i>
-        <span>My Profile</span>
-      </a>
-      <a href="../records/enrollment.html">
-        <i class="fa-regular fa-file-lines"></i>
-        <span>Enrollment</span>
-      </a>
-      <a href="../grades/grades.html">
-        <i class="fa-solid fa-chart-simple"></i>
-        <span>Grades</span>
-      </a>
-      <a href="../records/financial.html">
-        <i class="fa-regular fa-credit-card"></i>
-        <span>Financial</span>
-      </a>
-      <a href="../classes/class-schedule.html">
-        <i class="fa-regular fa-calendar"></i>
-        <span>Class Schedule</span>
-      </a>
-      <a href="../records/documents.html">
-        <i class="fa-regular fa-file-lines"></i>
-        <span>Documents</span>
-      </a>
-      <a href="announcements.html" class="active">
-        <i class="fa-solid fa-volume-high"></i>
-        <span>Announcement</span>
-      </a>
-      <a href="../classes/curriculum.html">
-        <i class="fa-solid fa-pen-ruler"></i>
-        <span>Curriculum</span>
-      </a>
-    </nav>
-
-    <div class="section-bottom">
-      <a href="#">
-        <i class="fa-solid fa-gear"></i>
-        <span>Settings</span>
-      </a>
-      <a href="../auth/student.html">
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <span>Logout</span>
-      </a>
-    </div>
-  </aside>
-
-  <!-- Main Content Area -->
-  <main class="section-main">
-
-    <!-- Top Header -->
-    <header class="dashboard-header">
-      <div class="search-box">
-        <input type="search" placeholder="Search" aria-label="Search dashboard">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-
-      <button class="header-icon" type="button" aria-label="Notifications">
-        <i class="fa-regular fa-bell"></i>
-      </button>
-
-      <button class="profile-button" type="button" aria-label="Open profile menu">
-        <span class="profile-icon"><i class="fa-regular fa-user"></i></span>
-        <i class="fa-solid fa-chevron-down"></i>
-      </button>
-    </header>
-
-    <!-- Page Content -->
-    <section class="section-content">
-      <p class="breadcrumb">
-        Home <i class="fa-solid fa-chevron-right"></i> Announcements
-      </p>
-
-      <h1 class="section-title">Announcements</h1>
-
-      <!-- Empty State View -->
-      <div class="announcement-empty">
-        <div>
-          <i class="fa-regular fa-bell-slash"></i>
-          <h2>No announcements yet</h2>
-          <p>There are no announcements available at this time.</p>
+<body class="dashboard-page">
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <img src="../../../images/cec-logo.png" alt="Cebu Eastern College logo">
+            <strong>CEC</strong>
+            <span>STUDENT PORTAL</span>
         </div>
-      </div>
-    </section>
 
-  </main>
+        <nav class="sidebar-nav" aria-label="Student navigation">
+            <div class="nav-section">Overview</div>
+            <a href="../dashboard/student-dashboard.html"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></a>
+
+            <div class="nav-section">Academics</div>
+            <a href="../classes/class-schedule.html"><i class="fa-regular fa-calendar-day"></i><span>Class Schedule</span></a>
+            <a href="../classes/curriculum.html"><i class="fa-solid fa-pen-ruler"></i><span>Curriculum</span></a>
+            <a href="../grades/grades.html"><i class="fa-solid fa-chart-simple"></i><span>Grades</span></a>
+            <a href="../records/enrollment.html"><i class="fa-regular fa-file-lines"></i><span>Enrollment</span></a>
+
+            <div class="nav-section">Records</div>
+            <a href="../records/student-profile.html"><i class="fa-regular fa-user"></i><span>My Profile</span></a>
+            <a href="../records/financial.html"><i class="fa-regular fa-credit-card"></i><span>Financial</span></a>
+            <a href="../records/documents.html"><i class="fa-regular fa-folder-open"></i><span>Documents</span></a>
+
+            <div class="nav-section">Campus</div>
+            <a href="announcements.html" class="active"><i class="fa-solid fa-bullhorn"></i><span>Announcements</span></a>
+
+            <div class="nav-section">Personal</div>
+            <a href="../settings/settings.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../auth/student.html"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Logout</span></a>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <label class="search-box">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" placeholder="Search subjects, records, or anything...">
+            </label>
+
+            <select class="semester-select" aria-label="Semester">
+                <option selected>1st Semester | 1st Year</option>
+                <option>2nd Semester | 1st Year</option>
+            </select>
+
+            <button class="header-icon" type="button" aria-label="Notifications">
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <span class="notif-dot"></span>
+            </button>
+
+            <button class="profile-button" type="button">
+                <span class="profile-avatar">JD</span>
+                <span class="profile-info">
+                    <strong>Juan Dela Cruz</strong>
+                    <small>Student</small>
+                </span>
+            </button>
+        </header>
+
+        <section class="dashboard-content">
+            <div class="page-head">
+                <div class="head-row">
+                    <div>
+                        <h1>Announcements</h1>
+                        <p class="page-desc">Academic, campus, and registrar notices for enrolled students.</p>
+                    </div>
+                    <div class="head-actions">
+                        <button class="btn btn-primary" type="button" data-toast-onclick="All announcements marked as read">
+                            <i class="fa-regular fa-envelope-open"></i> Mark All as Read
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="summary-strip" aria-label="Announcement summary">
+                <div class="summary-item">
+                    <p>Total Posts</p>
+                    <strong>12</strong>
+                    <small>This academic year</small>
+                </div>
+                <div class="summary-item">
+                    <p>Unread</p>
+                    <strong>3</strong>
+                    <small class="red">Requires review</small>
+                </div>
+                <div class="summary-item">
+                    <p>High Priority</p>
+                    <strong>2</strong>
+                    <small class="red">Action required</small>
+                </div>
+                <div class="summary-item">
+                    <p>Last Posted</p>
+                    <strong>2 hrs</strong>
+                    <small>by Registrar&apos;s Office</small>
+                </div>
+            </section>
+
+            <div class="section-toolbar">
+                <div class="filter-row">
+                    <div class="filter-box">
+                        <label for="announcement-category">Category</label>
+                        <select id="announcement-category">
+                            <option selected>All Categories</option>
+                            <option>Academic</option>
+                            <option>Registrar</option>
+                            <option>Campus</option>
+                            <option>Events</option>
+                        </select>
+                    </div>
+                    <div class="filter-box">
+                        <label for="announcement-priority">Priority</label>
+                        <select id="announcement-priority">
+                            <option selected>All Priorities</option>
+                            <option>High</option>
+                            <option>Normal</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stack">
+                <article class="card">
+                    <div class="card-head">
+                        <h2><i class="fa-solid fa-triangle-exclamation icon-alert" aria-hidden="true"></i> Midterm exam schedule released</h2>
+                        <span class="tag tag-red">High</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="page-desc">
+                            The Registrar's Office has released the midterm examination schedule for the 1st Semester, A.Y. 2026 &ndash; 2027.
+                        </p>
+                        <div class="detail-list">
+                            <div class="detail-row">
+                                <span class="detail-icon"><i class="fa-regular fa-calendar"></i></span>
+                                <div class="detail-info">
+                                    <strong>Examination week</strong>
+                                    <span>October 6 &ndash; 10, 2026 &middot; 7:30 AM start of session</span>
+                                </div>
+                                <span class="status-badge status-blue">Academic</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                <div class="detail-info">
+                                    <strong>Room assignments</strong>
+                                    <span>Posted at the main lobby bulletin and on the registrar's page</span>
+                                </div>
+                                <span class="status-badge status-blue">Registrar</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-foot">
+                        <p>Posted 2 hours ago by the Registrar's Office</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-head">
+                        <h2>Library Week: extended hours</h2>
+                        <span class="tag tag-blue">Normal</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="page-desc">
+                            In support of Library Week, the CEC library will be open from 7:00 AM to 8:00 PM, Monday through Saturday.
+                            Returned reference books are due on the same day to avoid overdue penalties.
+                        </p>
+                    </div>
+                    <div class="card-foot">
+                        <p>Posted yesterday by the Learning Resource Center</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-head">
+                        <h2>Scholarship application opens</h2>
+                        <span class="tag tag-blue">Normal</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="page-desc">
+                            Academic scholarship renewals for the 2nd Semester are now open. Submit your GWA certificate, income proof,
+                            and a signed application form to the scholarship office before the deadline.
+                        </p>
+                    </div>
+                    <div class="card-foot">
+                        <p>Posted 3 days ago by the Scholarship Committee</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-head">
+                        <h2>2nd semester payment deadline</h2>
+                        <span class="tag tag-red">High</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="page-desc">
+                            Settle your 2nd semester account on or before October 15, 2026 to keep your enrollment active.
+                            A 2% surcharge is added to the unpaid amount for every month of delay.
+                        </p>
+                    </div>
+                    <div class="card-foot">
+                        <p>Posted 3 days ago by the Accounting Office</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-head">
+                        <h2>Intramurals team registration</h2>
+                        <span class="tag tag-green">Event</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="page-desc">
+                            Sign up for the CEC Intramurals until September 30. Events include basketball, volleyball, e-sports,
+                            and academic competitions. Team rosters are endorsed by your class adviser.
+                        </p>
+                    </div>
+                    <div class="card-foot">
+                        <p>Posted 5 days ago by the Student Affairs Office</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-head">
+                        <h2>Class adviser assignment posted</h2>
+                        <span class="tag tag-blue">Normal</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="page-desc">
+                            Class adviser assignments for A.Y. 2026 &ndash; 2027 are now posted. You are assigned to
+                            Mr. Charles Bacus for BSIT-1A. Schedule your advising consultation through the portal.
+                        </p>
+                    </div>
+                    <div class="card-foot">
+                        <p>Posted last week by the Registrar's Office</p>
+                    </div>
+                </article>
+            </div>
+
+            <p class="note-bar">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                Enable notifications so you do not miss deadline announcements. Manage them under
+                <a href="../settings/notifications.html">Notification settings</a>.
+            </p>
+        </section>
+    </main>
 
 <script src="../../js/showToast.js"></script>
 <script src="../../js/copyToClipboard.js"></script>
@@ -119,5 +259,8 @@
 <script src="../../js/validateForm.js"></script>
 <script src="../../js/persistSelect.js"></script>
 <script src="../../js/setYear.js"></script>
+
+    <script src="../../js/notificationMenu.js"></script>
+    <script src="../../js/profileMenu.js"></script>
 </body>
 </html>

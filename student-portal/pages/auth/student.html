@@ -18,6 +18,7 @@
         <header class="auth-header">
             <img src="../../../images/cec-logo.png" alt="Cebu Eastern College logo">
             <h1>CEBU EASTERN COLLEGE</h1>
+            <span class="auth-kicker">Student Portal</span>
         </header>
 
         <section class="auth-card login-card" aria-labelledby="login-title">
@@ -36,7 +37,10 @@
                 <form action="../dashboard/student-dashboard.html" method="get">
                     <div class="field">
                         <label for="student-id">Student ID</label>
-                        <input type="text" id="student-id" name="student-id" placeholder="e.g. 2024-12345" autocomplete="username" required>
+                        <div class="input-icon">
+                            <i class="fa-solid fa-id-card" aria-hidden="true"></i>
+                            <input type="text" id="student-id" name="student-id" placeholder="e.g. 2024-12345" autocomplete="username" required>
+                        </div>
                     </div>
 
                     <div class="field">
@@ -44,7 +48,10 @@
                             <label for="student-password">Password</label>
                             <a href="password-recovery.html">Forgot Password?</a>
                         </div>
-                        <input type="password" id="student-password" name="password" placeholder="Enter password" autocomplete="current-password" required>
+                        <div class="input-icon">
+                            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                            <input type="password" id="student-password" name="password" placeholder="Enter password" autocomplete="current-password" required>
+                        </div>
                     </div>
 
                     <label class="remember-row">
