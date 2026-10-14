@@ -74,12 +74,22 @@
             <section class="summary-card" aria-label="Announcements summary">
                 <div class="announce-summary-head">
                     <h1><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Announcements</h1>
-                    <a class="announce-view-all" href="all.html">
-                        View All <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                    </a>
+                    <div class="announce-summary-actions">
+                        <a class="announce-view-all" href="all.html">
+                            View All <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-primary" href="create.html">
+                            <i class="fa-solid fa-plus" aria-hidden="true"></i> Create Announcement
+                        </a>
+                    </div>
                 </div>
 
-                <ul class="announce-list">
+                <div class="tab-bar" role="tablist" aria-label="Announcement groups">
+                    <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="official"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Official Announcements</button>
+                    <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="mine"><i class="fa-regular fa-user" aria-hidden="true"></i> My Announcements</button>
+                </div>
+
+                <ul class="announce-list" id="announce-list">
                 </ul>
             </section>
         </section>
@@ -93,6 +103,8 @@
             });
         })();
     </script>
+    <script src="../../../js/announcement-store.js"></script>
+    <script src="../../js/announcements.js"></script>
     <script src="../../js/notificationMenu.js"></script>
     <script src="../../js/profileMenu.js"></script>
 </body>

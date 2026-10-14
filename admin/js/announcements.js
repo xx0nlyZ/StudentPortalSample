@@ -1,16 +1,7 @@
 (function () {
     'use strict';
 
-    function mulberry32(a) {
-        return function () {
-            a |= 0; a = a + 0x6D2B79F5 | 0;
-            var t = Math.imul(a ^ a >>> 15, 1 | a);
-            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-            return ((t ^ t >>> 14) >>> 0) / 4294967296;
-        };
-    }
-
-    var rand = mulberry32(20260525);
+    var ROLE = 'admin';
 
     var STATUS_PILL = {
         Live: 'status-green',
@@ -18,32 +9,41 @@
         Expired: 'status-red'
     };
 
-    var INITIAL = [
-        { id: 'ANN-1001', subject: 'Semestral Break Schedule Announced', summary: 'Classes will pause from June 15 to June 22 for the semestral break.', status: 'Live', createdBy: 'Elena Cruz', createdOn: 'May 20, 2024' },
-        { id: 'ANN-1002', subject: 'Midterm Exam Guidelines', summary: 'Important reminders and room assignments for midterm examinations.', status: 'Live', createdBy: 'Maria Santos', createdOn: 'May 19, 2024' },
-        { id: 'ANN-1003', subject: 'New Student Portal Features', summary: 'A new grade viewer and scheduling tool is rolling out this week.', status: 'Scheduled', createdBy: 'Ramon Villanueva', createdOn: 'May 18, 2024' },
-        { id: 'ANN-1004', subject: 'Faculty Development Workshop', summary: 'Sign up for the teaching strategies workshop on May 28, 2024.', status: 'Scheduled', createdBy: 'Maria Santos', createdOn: 'May 17, 2024' },
-        { id: 'ANN-1005', subject: 'General Assembly Reminder', summary: 'Mandatory attendance for all students at the CEC gymnasium.', status: 'Live', createdBy: 'Elena Cruz', createdOn: 'May 16, 2024' },
-        { id: 'ANN-1006', subject: 'Library Hours Extension', summary: 'The library will remain open until 9 PM during exam week.', status: 'Expired', createdBy: 'Leo Cabrera', createdOn: 'May 10, 2024' },
-        { id: 'ANN-1007', subject: 'Scholarship Application Deadline', summary: 'Submit requirements to the registrar before May 30, 2024.', status: 'Scheduled', createdBy: 'Anna Rodriguez', createdOn: 'May 15, 2024' },
-        { id: 'ANN-1008', subject: 'Portal Maintenance Notice', summary: 'Scheduled downtime on Saturday night for system upgrades.', status: 'Expired', createdBy: 'Elena Cruz', createdOn: 'May 05, 2024' }
-    ];
-
-    var announcements = INITIAL.map(function (a) {
-        return {
-            id: a.id,
-            subject: a.subject,
-            summary: a.summary,
-            status: a.status,
-            createdBy: a.createdBy,
-            createdOn: a.createdOn
-        };
-    });
-
     var state = {
         tab: 'all',
         query: ''
     };
+
+    function store() {
+        return window.AnnouncementStore;
+    }
+
+    function statusLabel(sharedStatus) {
+        var map = store() ? store().SHARED_TO_ADMIN_STATUS : null;
+        return (map && map[sharedStatus]) || sharedStatus || 'Live';
+    }
+
+    function formatOn(iso) {
+        var d = new Date(iso);
+        if (isNaN(d.getTime())) { return ''; }
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function adminItems() {
+        if (!store()) { return []; }
+        return store().all().filter(function (item) {
+            return item.origin === store().ORIGINS.ADMIN;
+        }).map(function (item) {
+            return {
+                id: item.id,
+                subject: item.title,
+                summary: item.message,
+                status: statusLabel(item.status),
+                createdBy: item.author || 'Administrator',
+                createdOn: formatOn(item.date)
+            };
+        });
+    }
 
     function initials(name) {
         return name.split(/\s+/).filter(function (p) { return p; })
@@ -92,16 +92,16 @@
 
     function render() {
         var list = document.getElementById('ann-list');
-        if (!list) return;
+        if (!list) { return; }
         list.innerHTML = skeletonItems();
 
         setTimeout(function () {
-            var visible = announcements.filter(function (a) {
-                if (state.tab !== 'all' && a.status.toLowerCase() !== state.tab) return false;
+            var visible = adminItems().filter(function (a) {
+                if (state.tab !== 'all' && a.status.toLowerCase() !== state.tab) { return false; }
                 var q = state.query.toLowerCase().trim();
                 if (q) {
                     var hay = (a.subject + ' ' + a.summary + ' ' + a.createdBy + ' ' + a.status).toLowerCase();
-                    if (hay.indexOf(q) === -1) return false;
+                    if (hay.indexOf(q) === -1) { return false; }
                 }
                 return true;
             });
@@ -110,8 +110,9 @@
     }
 
     function findById(id) {
-        for (var i = 0; i < announcements.length; i++) {
-            if (announcements[i].id === id) return announcements[i];
+        var items = adminItems();
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].id === id) { return items[i]; }
         }
         return null;
     }
@@ -160,7 +161,7 @@
         }
 
         var list = document.getElementById('ann-list');
-        if (!list) return;
+        if (!list) { return; }
 
         list.addEventListener('click', function (e) {
             var editBtn = e.target.closest('[data-edit]');
@@ -173,7 +174,7 @@
             if (caret) {
                 e.stopPropagation();
                 var panel = document.querySelector('[data-menu-panel="' + caret.getAttribute('data-menu') + '"]');
-                if (panel) panel.hidden = !panel.hidden;
+                if (panel) { panel.hidden = !panel.hidden; }
                 caret.setAttribute('aria-expanded', panel ? String(!panel.hidden) : 'false');
                 return;
             }
@@ -182,18 +183,26 @@
             if (del) {
                 var id = del.getAttribute('data-delete');
                 closeMenus();
+
+                var record = store() ? store().find(id) : null;
+                if (!store() || !store().isOwner(record, ROLE)) {
+                    showToast('You can only delete an announcement you created.', 'error');
+                    return;
+                }
+
                 showToast('Deleting "' + id + '" ...', '');
                 setTimeout(function () {
-                    announcements = announcements.filter(function (a) { return a.id !== id; });
+                    store().remove(id);
                     var item = document.querySelector('.ann-item[data-id="' + id + '"]');
-                    if (item) item.remove();
+                    if (item) { item.remove(); }
                     showToast('Announcement deleted.', 'success');
+                    render();
                 }, 500);
             }
         });
 
         document.addEventListener('click', function (e) {
-            if (!e.target.closest('.split')) closeMenus();
+            if (!e.target.closest('.split')) { closeMenus(); }
         });
     }
 

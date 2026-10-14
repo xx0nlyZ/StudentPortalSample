@@ -79,7 +79,10 @@
 
             <div class="table-card">
                 <div class="table-heading">
-                    <h3>Official Announcements</h3>
+                    <div class="tab-bar" role="tablist" aria-label="Announcement groups">
+                        <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="official">Official Announcements</button>
+                        <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="mine">My Announcements</button>
+                    </div>
                 </div>
                 <div class="table-wrap">
                     <table class="data-table">
@@ -89,39 +92,10 @@
                                 <th>Posted By</th>
                                 <th>Date Posted</th>
                                 <th>Priority</th>
+                                <th class="actions-col">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="announcements-body">
-                            <tr>
-                                <td class="announcement-title">Class Suspension Aug 12, 2025</td>
-                                <td class="muted-cell">Admin</td>
-                                <td class="muted-cell">August 12, 2025</td>
-                                <td><span class="priority-badge priority-high">High</span></td>
-                            </tr>
-                            <tr>
-                                <td class="announcement-title">Midterm Examination Schedule</td>
-                                <td class="muted-cell">Webmaster Admin</td>
-                                <td class="muted-cell">August 10, 2025</td>
-                                <td><span class="priority-badge priority-normal">Normal</span></td>
-                            </tr>
-                            <tr>
-                                <td class="announcement-title">New IT Electives Available</td>
-                                <td class="muted-cell">BSIT</td>
-                                <td class="muted-cell">August 08, 2025</td>
-                                <td><span class="priority-badge priority-normal">Normal</span></td>
-                            </tr>
-                            <tr>
-                                <td class="announcement-title">Form Submission Reminder</td>
-                                <td class="muted-cell">Dean's Office</td>
-                                <td class="muted-cell">August 05, 2025</td>
-                                <td><span class="priority-badge priority-low">Low</span></td>
-                            </tr>
-                            <tr>
-                                <td class="announcement-title">Faculty Assembly</td>
-                                <td class="muted-cell">Registrar</td>
-                                <td class="muted-cell">July 28, 2025</td>
-                                <td><span class="priority-badge priority-normal">Normal</span></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -139,22 +113,8 @@
         </section>
     </main>
 
-    <script>
-        const searchInput = document.getElementById('keyword-search');
-        const rows = document.querySelectorAll('#announcements-body tr');
-
-        searchInput.addEventListener('input', function () {
-            const q = this.value.trim().toLowerCase();
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(q) ? '' : 'none';
-            });
-            const visible = [...rows].filter(r => r.style.display !== 'none').length;
-            document.querySelector('.pagination-info').textContent = visible === 0
-                ? 'No announcements found'
-                : `Showing 1 to ${visible}`;
-        });
-    </script>
+    <script src="../../../js/announcement-store.js"></script>
+    <script src="../../js/announcements.js"></script>
 <script src="../../js/showToast.js"></script>
 <script src="../../js/copyToClipboard.js"></script>
 <script src="../../js/confirmAction.js"></script>

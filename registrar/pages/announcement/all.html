@@ -95,6 +95,7 @@
                     <option>Schedule</option>
                     <option>Finance</option>
                     <option>Event</option>
+                    <option>General</option>
                 </select>
                 <select class="filter-select" aria-label="Filter by status">
                     <option>All Status</option>
@@ -102,22 +103,34 @@
                     <option>Archived</option>
                     <option>Scheduled</option>
                 </select>
-                <button type="button" class="btn btn-outline btn-export"><i class="fa-solid fa-download" aria-hidden="true"></i> Export All</button>
+                <div class="announce-filter-actions">
+                    <a class="btn btn-primary" href="create.html"><i class="fa-solid fa-plus" aria-hidden="true"></i> Create Announcement</a>
+                    <button type="button" class="btn btn-outline btn-export"><i class="fa-solid fa-download" aria-hidden="true"></i> Export All</button>
+                </div>
             </div>
 
             <section class="table-card" aria-label="All system announcements">
+                <div class="table-heading">
+                    <div class="tab-bar" role="tablist" aria-label="Announcement groups">
+                        <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="official"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Official Announcements</button>
+                        <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="mine"><i class="fa-regular fa-user" aria-hidden="true"></i> My Announcements</button>
+                    </div>
+                </div>
                 <div class="table-wrap">
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
+                                <th>Audience</th>
                                 <th>Category</th>
                                 <th>Date Posted</th>
+                                <th>Priority</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="announce-tbody">
                         </tbody>
                     </table>
                 </div>
@@ -146,6 +159,8 @@
             });
         })();
     </script>
+    <script src="../../../js/announcement-store.js"></script>
+    <script src="../../js/announcements.js"></script>
     <script src="../../js/notificationMenu.js"></script>
     <script src="../../js/profileMenu.js"></script>
 </body>

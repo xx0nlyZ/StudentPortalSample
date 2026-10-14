@@ -121,21 +121,12 @@
                     </div>
 
                     <div class="form-field field-section">
-                        <span class="form-label">Target Audience</span>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" id="aud-all-classes" checked>
-                                All Classes
-                            </label>
-                            <label>
-                                <input type="checkbox" id="aud-all-students">
-                                All Students
-                            </label>
-                            <label>
-                                <input type="checkbox" id="aud-specific">
-                                Specific Sections
-                            </label>
-                        </div>
+                        <label class="form-label" for="announcement-audience">Target Audience <span class="required">*</span></label>
+                        <select id="announcement-audience" class="form-select">
+                            <option value="" selected disabled>Select target audience</option>
+                            <option value="Students">Students</option>
+                            <option value="Faculty &amp; Students">Faculty &amp; Students</option>
+                        </select>
                         <p class="helper-text">(Select at least 1 option)</p>
                     </div>
 
@@ -159,6 +150,7 @@
 
     <div class="toast-wrap" id="toast-wrap"></div>
 
+    <script src="../../../js/announcement-store.js"></script>
     <script>
         function showToast(message, isError) {
             const wrap = document.getElementById('toast-wrap');
@@ -176,6 +168,16 @@
         const form = document.getElementById('announcement-form');
         const titleInput = document.getElementById('announcement-title');
         const messageInput = document.getElementById('announcement-message');
+        const audienceSelect = document.getElementById('announcement-audience');
+        const helperText = document.querySelector('.helper-text');
+
+        function resetAudienceError() {
+            helperText.textContent = '(Select at least 1 option)';
+            helperText.style.color = '';
+            audienceSelect.style.borderColor = 'initial';
+        }
+
+        audienceSelect.addEventListener('change', resetAudienceError);
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -183,6 +185,7 @@
             let valid = true;
             titleInput.style.borderColor = 'initial';
             messageInput.style.borderColor = 'initial';
+            resetAudienceError();
 
             if (titleInput.value.trim() === '') {
                 titleInput.style.borderColor = '#B3261E';
@@ -193,14 +196,11 @@
                 valid = false;
             }
 
-            const checked = document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked');
-            if (checked.length === 0) {
+            if (!audienceSelect.value) {
+                audienceSelect.style.borderColor = '#B3261E';
+                helperText.textContent = '(Please select a target audience)';
+                helperText.style.color = '#B3261E';
                 valid = false;
-                document.querySelector('.helper-text').textContent = '(Please select at least 1 option)';
-                document.querySelector('.helper-text').style.color = '#B3261E';
-            } else {
-                document.querySelector('.helper-text').textContent = '(Select at least 1 option)';
-                document.querySelector('.helper-text').style.color = '';
             }
 
             if (!valid) {
@@ -213,6 +213,21 @@
             btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Posting...';
 
             setTimeout(() => {
+                if (window.AnnouncementStore) {
+                    window.AnnouncementStore.upsert({
+                        id: 'ann-' + Date.now(),
+                        title: titleInput.value.trim(),
+                        message: messageInput.value.trim(),
+                        audience: audienceSelect.value,
+                        priority: document.getElementById('announcement-priority').value || 'Normal',
+                        category: 'General',
+                        date: new Date().toISOString(),
+                        status: 'Active',
+                        author: 'Mr. Charles Bacus',
+                        origin: 'faculty'
+                    });
+                }
+
                 showToast('Announcement posted successfully.');
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fa-solid fa-bullhorn"></i> Post Announcement';

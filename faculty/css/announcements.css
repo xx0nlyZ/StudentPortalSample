@@ -367,3 +367,78 @@
 .btn-post:hover {
     background: var(--navy);
 }
+
+/* ==========================================================================
+   ANNOUNCEMENT TABS + ROW ACTIONS
+   ========================================================================== */
+.tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tab-btn {
+    height: 34px;
+    padding: 0 16px;
+    border: 1px solid #D5DEE9;
+    border-radius: 20px;
+    color: var(--navy);
+    background: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tab-btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.tab-btn.active {
+    border-color: var(--blue);
+    color: #FFFFFF;
+    background: var(--blue);
+}
+
+.actions-col {
+    width: 96px;
+}
+
+.data-table th.actions-col,
+.data-table td:last-child {
+    text-align: right;
+}
+
+.row-actions {
+    display: inline-flex;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    display: inline-grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 1px solid #D5DEE9;
+    border-radius: 6px;
+    color: var(--blue);
+    background: #FFFFFF;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    border-color: var(--blue);
+    background: #EEF4FF;
+}
+
+.action-btn.danger {
+    color: #B3261E;
+}
+
+.action-btn.danger:hover {
+    border-color: #B3261E;
+    background: #FBE4E4;
+}

@@ -634,3 +634,62 @@
         padding: 40px 18px;
     }
 }
+
+/* ==========================================================================
+   ANNOUNCEMENT TAGS / STATUS / READ STATE
+   (shared markup; base styles live in student-dashboard.css which this
+   page does not load, so define the needed variants here)
+   ========================================================================== */
+.tag {
+    flex: 0 0 auto;
+    margin-top: 1px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.tag-red {
+    color: #B3261E;
+    background: #FBE4E4;
+}
+
+.tag-blue {
+    color: #1D4E9B;
+    background: #E2ECFA;
+}
+
+.tag-green {
+    color: #177245;
+    background: #E3F4EA;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-blue {
+    color: #1D4E9B;
+    background: #E2ECFA;
+}
+
+.status-green {
+    color: #177245;
+    background: #E3F4EA;
+}
+
+.stack .card {
+    cursor: pointer;
+}
+
+.stack .card.is-read {
+    opacity: 0.72;
+}
+
