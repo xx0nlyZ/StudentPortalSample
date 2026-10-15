@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Recovery | Cebu Eastern College</title>
+    <link rel="stylesheet" href="recovery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <main class="auth-page">
+        <div class="auth-bg" aria-hidden="true"></div>
+
+        <a href="index.html" class="auth-back" aria-label="Back to school portal">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        </a>
+
+        <header class="auth-header">
+            <img src="../images/cec-logo.png" alt="Cebu Eastern College logo">
+            <h1>CEBU EASTERN COLLEGE</h1>
+        </header>
+
+        <section class="auth-card auth-card-padded" aria-labelledby="recovery-title">
+            <div class="recovery-icon" aria-hidden="true">
+                <i class="fa-solid fa-envelope envelope"></i>
+                <i class="fa-solid fa-key key"></i>
+            </div>
+
+            <h2 class="recovery-title" id="recovery-title">Forgot Password?</h2>
+            <p class="recovery-msg">Enter your school ID or registered email address and we'll send you a link to reset your password.</p>
+
+            <form action="index.html" method="get">
+                <div class="field">
+                    <label for="recovery-input">School ID or Email</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                        <input type="text" id="recovery-input" name="recovery" placeholder="Enter your school ID or email" autocomplete="username" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Send Reset Link</button>
+            </form>
+
+            <div class="recovery-divider">
+                <a href="index.html">Back to Sign In</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
