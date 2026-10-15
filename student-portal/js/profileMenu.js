@@ -117,7 +117,7 @@
             '    <a class="profile-menu-item" role="menuitem" href="../grades/grades.html"><i class="fa-solid fa-chart-simple" aria-hidden="true"></i> Grades</a>',
             '    <a class="profile-menu-item" role="menuitem" href="../settings/settings.html"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>',
             '    <div class="profile-menu-divider" role="separator"></div>',
-            '    <a class="profile-menu-item is-danger" role="menuitem" href="../auth/student.html"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</a>',
+            '    <a class="profile-menu-item is-danger" role="menuitem" href="../../../index/index.html"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</a>',
             '</div>'
         ].join('\n');
 

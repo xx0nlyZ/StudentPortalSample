@@ -67,7 +67,7 @@
                     <a class="back-btn" href="../dashboard/admin.html" aria-label="Back to Dashboard"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
                     <div>
                         <h1>User Management</h1>
-                        <p class="page-desc">Search, filter, and manage all portal user accounts.</p>
+                        <p class="page-desc">Create accounts for students, faculty, and registrar, and manage existing portal users.</p>
                     </div>
                 </div>
             </div>
@@ -99,10 +99,9 @@
                     <span>Role:</span>
                     <select id="role-filter" aria-label="Filter by role">
                         <option value="">All Roles</option>
-                        <option value="Admin">Admin</option>
-                        <option value="Faculty">Faculty</option>
                         <option value="Student">Student</option>
-                        <option value="Staff">Staff</option>
+                        <option value="Faculty">Faculty</option>
+                        <option value="Registrar">Registrar</option>
                     </select>
                 </label>
 
@@ -126,6 +125,10 @@
                         <button type="button" class="dropdown-item" role="menuitem" data-format="excel"><i class="fa-solid fa-file-excel" aria-hidden="true"></i> Export as Excel</button>
                     </div>
                 </div>
+
+                <button type="button" class="btn btn-primary create-account-btn" id="create-account-btn">
+                    <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Create Account
+                </button>
             </div>
 
             <article class="card table-card">
@@ -170,6 +173,53 @@
             </article>
         </section>
     </main>
+
+    <div class="modal-overlay" id="modal-create-account">
+        <div class="modal">
+            <div class="modal-head">
+                <h3><i class="fa-solid fa-user-plus" style="color:var(--blue);margin-right:8px;"></i> Create Account</h3>
+                <button type="button" class="modal-close" data-close="modal-create-account" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-note">Create login credentials for a student, faculty, or registrar account.</p>
+                <div class="form-grid">
+                    <div class="form-field full">
+                        <label for="new-full-name">Full Name <em>*</em></label>
+                        <input type="text" class="form-input" id="new-full-name" placeholder="Enter full name">
+                    </div>
+                    <div class="form-field">
+                        <label for="new-user-id">User ID <em>*</em></label>
+                        <input type="text" class="form-input" id="new-user-id" placeholder="e.g. CEC-24010006">
+                    </div>
+                    <div class="form-field">
+                        <label for="new-email">Email <em>*</em></label>
+                        <input type="email" class="form-input" id="new-email" placeholder="user@cec.edu.ph">
+                    </div>
+                    <div class="form-field">
+                        <label for="new-role">Role <em>*</em></label>
+                        <select class="form-select" id="new-role">
+                            <option value="">Select role</option>
+                            <option value="Student">Student</option>
+                            <option value="Faculty">Faculty</option>
+                            <option value="Registrar">Registrar</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="new-status">Status <em>*</em></label>
+                        <select class="form-select" id="new-status">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-foot">
+                <button type="button" class="btn btn-outline" data-close="modal-create-account">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btn-save-account"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> Create Account</button>
+            </div>
+        </div>
+    </div>
 
     <script src="../../js/user-management.js"></script>
     <script src="../../js/notificationMenu.js"></script>

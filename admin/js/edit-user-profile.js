@@ -14,7 +14,7 @@
 
     var FIRST = ['Maria', 'Juan', 'Ana', 'Paolo', 'Sofia', 'Miguel', 'Liza', 'Carlo', 'Rita', 'Dennis', 'Karen', 'Mark', 'Nina', 'Ramon', 'Grace', 'Leo', 'Anamarie', 'Joshua', 'Camille', 'Bryan', 'Andrea', 'Vince', 'Patricia', 'Emmanuel', 'Christine', 'Rodolfo', 'Shiela', 'Arvin', 'Jessa', 'Francis', 'Paul', 'Angela', 'Kevin', 'Melissa', 'Darren', 'Giselle', 'Jonathan', 'Teresa', 'Ivan', 'Kathleen', 'Ralph', 'Dianne', 'Marco', 'Alyssa', 'Nathaniel'];
     var LAST = ['Santos', 'Cruz', 'Garcia', 'Reyes', 'Ramos', 'Mendoza', 'Torres', 'Aquino', 'Navarro', 'Velasco', 'Domingo', 'Castillo', 'Bautista', 'Flores', 'Villanueva', 'Salazar', 'Dela Cruz', 'Padilla', 'Ocampo', 'Roxas', 'Bernardo', 'Marquez', 'Sotto', 'Lim', 'Chua', 'Go', 'Tan', 'Sy', 'Uy', 'Yu', 'Fernandez', 'Villamor', 'Balagtas', 'Tolentino', 'Rosales', 'Bravo', 'Escobar', 'De Guzman', 'Manalo', 'Capistrano'];
-    var ROLE_WEIGHTS = ['Student', 'Student', 'Student', 'Student', 'Student', 'Faculty', 'Faculty', 'Staff', 'Admin'];
+    var ROLE_WEIGHTS = ['Student', 'Student', 'Student', 'Student', 'Student', 'Faculty', 'Faculty', 'Registrar', 'Registrar'];
 
     var DEFAULT_PROFILE = {
         userId: 'ADM-2023010',

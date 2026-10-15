@@ -45,12 +45,7 @@
             <label class="search-box">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                 <input type="search" placeholder="Search subjects, records, or anything...">
-            </label>
-
-            <select class="semester-select" aria-label="Semester">
-                <option selected>1st Semester | 1st Year</option>
-                <option>2nd Semester | 1st Year</option>
-            </select>
+</label>
 
             <button class="header-icon" type="button" aria-label="Notifications">
                 <i class="fa-regular fa-bell" aria-hidden="true"></i>
@@ -72,7 +67,7 @@
                 <div class="head-row">
                     <div>
                         <h1>Account Settings</h1>
-                        <p class="page-desc">Manage your portal identity, sign-in details, and profile photo.</p>
+                        <p class="page-desc">View your portal identity, sign-in details, and profile photo.</p>
                     </div>
                     <div class="head-actions">
                         <button class="btn-export" type="button" data-toast-onclick="Profile summary downloaded" data-toast-type="info">
@@ -103,19 +98,16 @@
                                 <div>
                                     <form id="account-form" data-student-form data-success-message="Your account details have been updated" novalidate>
                                         <div class="form-field">
-                                            <label class="form-label" for="full-name">Full Name <span class="required">*</span></label>
-                                            <input type="text" id="full-name" class="form-input" value="Juan A. Dela Cruz" required>
+                                            <label class="form-label" for="full-name">Full Name</label>
+                                            <input type="text" id="full-name" class="form-input" value="Juan A. Dela Cruz" readonly>
                                         </div>
                                         <div class="form-field">
-                                            <label class="form-label" for="email">Email Address <span class="required">*</span></label>
-                                            <div class="input-group">
-                                                <input type="email" id="email" class="form-input" value="juan.delacruz@cec.edu.ph" required>
-                                                <button type="button" class="btn-verify" data-toast-onclick="Verification code sent to your email" data-toast-type="info">Verify</button>
-                                            </div>
+                                            <label class="form-label" for="email">Email Address</label>
+                                            <input type="email" id="email" class="form-input" value="juan.delacruz@cec.edu.ph" readonly>
                                         </div>
                                         <div class="form-field">
                                             <label class="form-label" for="phone">Mobile Number</label>
-                                            <input type="text" id="phone" class="form-input" value="0917 555 0142">
+                                            <input type="text" id="phone" class="form-input" value="0917 555 0142" readonly>
                                         </div>
                                         <div class="form-field">
                                             <label class="form-label" for="student-id">Student ID</label>
@@ -127,11 +119,7 @@
                                         </div>
                                         <div class="form-field">
                                             <label class="form-label" for="address">Address</label>
-                                            <input type="text" id="address" class="form-input" value="126 Junquera Ext., Cebu City, Cebu">
-                                        </div>
-                                        <div class="form-actions">
-                                            <button type="reset" class="btn-outline">Reset</button>
-                                            <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+                                            <input type="text" id="address" class="form-input" value="126 Junquera Ext., Cebu City, Cebu" readonly>
                                         </div>
                                     </form>
                                 </div>
@@ -140,18 +128,13 @@
                                     <h3>Profile Photo</h3>
                                     <div class="avatar-photo" data-avatar-preview>
                                         JD
-                                        <span class="camera-badge"><i class="fa-solid fa-camera"></i></span>
                                     </div>
-                                    <button type="button" class="btn-outline" data-avatar-trigger data-avatar-target="#photo-input">
-                                        <i class="fa-solid fa-image"></i> Change Photo
-                                    </button>
-                                    <input type="file" id="photo-input" data-avatar-input accept="image/*" hidden>
-                                    <p class="caption-note">JPG or PNG, up to 2 MB. A square 2x2 photo is recommended.</p>
+                                    <p class="caption-note">Profile photo is managed by the Registrar's Office.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-foot">
-                            <p>Name, student ID, and program are managed by the Registrar's Office.</p>
+                            <p>Account details are managed by the Registrar's Office and cannot be edited here.</p>
                         </div>
                     </div>
                 </div>
@@ -162,8 +145,6 @@
 <script src="../../js/showToast.js"></script>
 <script src="../../js/copyToClipboard.js"></script>
 <script src="../../js/confirmAction.js"></script>
-<script src="../../js/avatarUpload.js"></script>
-<script src="../../js/validateForm.js"></script>
 <script src="../../js/persistSelect.js"></script>
 <script src="../../js/setYear.js"></script>
 

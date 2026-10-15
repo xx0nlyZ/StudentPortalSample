@@ -14,13 +14,13 @@
 
     var FIRST = ['Maria', 'Juan', 'Ana', 'Paolo', 'Sofia', 'Miguel', 'Liza', 'Carlo', 'Rita', 'Dennis', 'Karen', 'Mark', 'Nina', 'Ramon', 'Grace', 'Leo', 'Anamarie', 'Joshua', 'Camille', 'Bryan', 'Andrea', 'Vince', 'Patricia', 'Emmanuel', 'Christine', 'Rodolfo', 'Shiela', 'Arvin', 'Jessa', 'Francis', 'Paul', 'Angela', 'Kevin', 'Melissa', 'Darren', 'Giselle', 'Jonathan', 'Teresa', 'Ivan', 'Kathleen', 'Ralph', 'Dianne', 'Marco', 'Alyssa', 'Nathaniel'];
     var LAST = ['Santos', 'Cruz', 'Garcia', 'Reyes', 'Ramos', 'Mendoza', 'Torres', 'Aquino', 'Navarro', 'Velasco', 'Domingo', 'Castillo', 'Bautista', 'Flores', 'Villanueva', 'Salazar', 'Dela Cruz', 'Padilla', 'Ocampo', 'Roxas', 'Bernardo', 'Marquez', 'Sotto', 'Lim', 'Chua', 'Go', 'Tan', 'Sy', 'Uy', 'Yu', 'Fernandez', 'Villamor', 'Balagtas', 'Tolentino', 'Rosales', 'Bravo', 'Escobar', 'De Guzman', 'Manalo', 'Capistrano'];
-    var ROLE_WEIGHTS = ['Student', 'Student', 'Student', 'Student', 'Student', 'Faculty', 'Faculty', 'Staff', 'Admin'];
+    var ROLE_WEIGHTS = ['Student', 'Student', 'Student', 'Student', 'Student', 'Faculty', 'Faculty', 'Registrar', 'Registrar'];
 
     var ROLE_BADGE = {
         Admin: 'badge-navy',
         Faculty: 'badge-blue',
         Student: 'badge-green',
-        Staff: 'badge-amber'
+        Registrar: 'badge-amber'
     };
 
     var STATUS_PILL = {
@@ -386,6 +386,111 @@
         document.addEventListener('click', function () { closeExportMenu(); });
     }
 
+    var createSeq = USERS.length;
+
+    function generateUserId() {
+        createSeq++;
+        return 'CEC-240' + String(10000 + createSeq);
+    }
+
+    function uniqueUsername(fullName) {
+        var parts = fullName.split(/\s+/).filter(function (p) { return p; });
+        if (!parts.length) return 'user';
+        var base;
+        if (parts.length === 1) {
+            base = parts[0].toLowerCase().replace(/\s/g, '');
+        } else {
+            base = parts[0].charAt(0).toLowerCase() + '.' + parts[parts.length - 1].toLowerCase().replace(/\s/g, '');
+        }
+        var slug = base;
+        var seq = 0;
+        while (USERS.some(function (u) { return u.username === slug; })) {
+            seq++;
+            slug = base + seq;
+        }
+        return slug;
+    }
+
+    function openModal(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.add('active');
+    }
+
+    function closeModal(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('active');
+    }
+
+    function refreshSummary() {
+        var pills = document.getElementById('count-pills');
+        if (pills) pills.innerHTML = countPillsHtml();
+    }
+
+    function bindCreateAccount() {
+        var openBtn = document.getElementById('create-account-btn');
+        var saveBtn = document.getElementById('btn-save-account');
+        var overlay = document.getElementById('modal-create-account');
+
+        if (openBtn) {
+            openBtn.addEventListener('click', function () {
+                document.getElementById('new-full-name').value = '';
+                document.getElementById('new-user-id').value = generateUserId();
+                document.getElementById('new-email').value = '';
+                document.getElementById('new-role').value = '';
+                document.getElementById('new-status').value = 'Active';
+                openModal('modal-create-account');
+            });
+        }
+
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function () {
+                var fullName = document.getElementById('new-full-name').value.trim();
+                var userId = document.getElementById('new-user-id').value.trim();
+                var email = document.getElementById('new-email').value.trim();
+                var role = document.getElementById('new-role').value;
+                var status = document.getElementById('new-status').value;
+
+                if (!fullName || !userId || !email || !role || !status) {
+                    showToast('Please fill in all required fields.', 'error');
+                    return;
+                }
+                if (!/^\S+@\S+\.\S+$/.test(email)) {
+                    showToast('Enter a valid email address.', 'error');
+                    return;
+                }
+                if (USERS.some(function (u) { return u.id.toLowerCase() === userId.toLowerCase(); })) {
+                    showToast('That User ID is already in use.', 'error');
+                    return;
+                }
+
+                USERS.unshift({
+                    id: userId,
+                    fullName: fullName,
+                    username: uniqueUsername(fullName),
+                    role: role,
+                    status: status,
+                    lastActive: new Date()
+                });
+
+                closeModal('modal-create-account');
+                refreshSummary();
+                state.page = 1;
+                renderRows();
+                showToast(fullName + ' (' + role + ') account created.', 'success');
+            });
+        }
+
+        Array.prototype.forEach.call(document.querySelectorAll('[data-close="modal-create-account"]'), function (btn) {
+            btn.addEventListener('click', function () { closeModal('modal-create-account'); });
+        });
+
+        if (overlay) {
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) overlay.classList.remove('active');
+            });
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         var pills = document.getElementById('count-pills');
         if (pills) pills.innerHTML = countPillsHtml();
@@ -394,6 +499,7 @@
         bindPagination();
         bindSelection();
         bindExport();
+        bindCreateAccount();
         loadUsers();
     });
 })();

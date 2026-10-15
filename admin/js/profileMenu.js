@@ -117,7 +117,7 @@
             '    <a class="profile-menu-item" role="menuitem" href="../users/user-management.html"><i class="fa-solid fa-user-gear" aria-hidden="true"></i> User Management</a>',
             '    <a class="profile-menu-item" role="menuitem" href="../settings/settings.html"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>',
             '    <div class="profile-menu-divider" role="separator"></div>',
-            '    <a class="profile-menu-item is-danger" role="menuitem" href="../auth/sign-in.html"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</a>',
+            '    <a class="profile-menu-item is-danger" role="menuitem" href="../../../index/index.html"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</a>',
             '</div>'
         ].join('\n');
 
