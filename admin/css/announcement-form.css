@@ -96,40 +96,6 @@
     pointer-events: none;
 }
 
-.specific-picker {
-    margin-top: 10px;
-    padding: 14px 16px;
-    border: 1px solid #E3E9F2;
-    border-radius: 8px;
-    background: #FBFCFE;
-}
-
-.specific-picker[hidden] {
-    display: none;
-}
-
-.check-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px 18px;
-}
-
-.check-list label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--navy);
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.check-list input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: var(--blue);
-    cursor: pointer;
-}
-
 .rte-toolbar {
     display: flex;
     align-items: center;

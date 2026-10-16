@@ -15,7 +15,8 @@
     var CANONICAL_TO_ADMIN_AUDIENCE = {
         'Faculty & Students': 'All Users',
         'Students': 'Students',
-        'Faculty': 'Faculty'
+        'Faculty': 'Faculty',
+        'Registrar': 'Registrar'
     };
 
     var ADMIN_STATUS_TO_SHARED = { Live: 'Active', Scheduled: 'Scheduled', Expired: 'Archived' };
@@ -23,10 +24,11 @@
 
     function canonicalAudience(raw) {
         var list = Array.isArray(raw) ? raw : [raw];
-        var known = { 'All Users': 1, 'Students': 1, 'Faculty': 1, 'Staff': 1 };
+        var known = { 'All Users': 1, 'Students': 1, 'Faculty': 1, 'Staff': 1, 'Registrar': 1 };
         var hasBroad = false;
         var hasStudents = false;
         var hasFaculty = false;
+        var hasRegistrar = false;
 
         list.forEach(function (value) {
             if (value === 'All Users' || value === 'Specific Departments') {
@@ -35,6 +37,8 @@
                 hasStudents = true;
             } else if (value === 'Faculty' || value === 'Staff') {
                 hasFaculty = true;
+            } else if (value === 'Registrar') {
+                hasRegistrar = true;
             } else if (!known[value]) {
                 hasBroad = true;
             }
@@ -43,6 +47,7 @@
         if (hasBroad || (hasStudents && hasFaculty)) { return 'Faculty & Students'; }
         if (hasStudents) { return 'Students'; }
         if (hasFaculty) { return 'Faculty'; }
+        if (hasRegistrar) { return 'Registrar'; }
         return 'Students';
     }
 

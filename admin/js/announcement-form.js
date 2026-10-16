@@ -30,55 +30,30 @@
         }, 2600);
     }
 
-    var TOP_LEVEL_AUDIENCES = ['All Users', 'Students', 'Faculty', 'Staff'];
+    var TOP_LEVEL_AUDIENCES = ['All Users', 'Students', 'Faculty', 'Registrar'];
 
     function audienceSelect() {
         return document.getElementById('audience-select');
     }
 
-    function deptPicker() {
-        return document.getElementById('dept-picker');
-    }
-
     function updateAudienceHint() {
         var hint = document.getElementById('audience-hint');
         if (!hint) { return; }
-        hint.textContent = audienceSelect() && audienceSelect().value === 'Specific Departments'
-            ? 'Select the departments that will receive this announcement.'
-            : 'Select the audience that will receive this announcement.';
-    }
-
-    function toggleDeptPicker() {
-        var select = audienceSelect();
-        var picker = deptPicker();
-        if (!select || !picker) { return; }
-        var isSpecific = select.value === 'Specific Departments';
-        picker.hidden = !isSpecific;
-        if (!isSpecific) {
-            picker.querySelectorAll('.dept-option').forEach(function (box) { box.checked = false; });
-        }
+        hint.textContent = 'Select the audience that will receive this announcement.';
     }
 
     function setAudience(selected) {
         var select = audienceSelect();
-        var picker = deptPicker();
-        if (!select || !picker) { return; }
+        if (!select) { return; }
 
         selected = selected || [];
-        picker.querySelectorAll('.dept-option').forEach(function (box) {
-            box.checked = selected.indexOf(box.value) !== -1;
-        });
-
-        var isTopLevel = selected.length === 1 && TOP_LEVEL_AUDIENCES.indexOf(selected[0]) !== -1;
-        if (isTopLevel) {
-            select.value = selected[0];
-            picker.hidden = true;
-        } else if (selected.length) {
-            select.value = 'Specific Departments';
-            picker.hidden = false;
+        var value = selected.length === 1 && TOP_LEVEL_AUDIENCES.indexOf(selected[0]) !== -1
+            ? selected[0]
+            : '';
+        if (value) {
+            select.value = value;
         } else {
             select.selectedIndex = 0;
-            picker.hidden = true;
         }
         updateAudienceHint();
     }
@@ -86,12 +61,6 @@
     function selectedAudience() {
         var select = audienceSelect();
         if (!select || !select.value) { return []; }
-        if (select.value === 'Specific Departments') {
-            return Array.prototype.map.call(
-                document.querySelectorAll('.dept-option:checked'),
-                function (box) { return box.value; }
-            );
-        }
         return [select.value];
     }
 
@@ -262,17 +231,9 @@
         if (select) {
             select.addEventListener('change', function () {
                 select.style.borderColor = '';
-                toggleDeptPicker();
                 updateAudienceHint();
             });
         }
-
-        document.querySelectorAll('.dept-option').forEach(function (box) {
-            box.addEventListener('change', function () {
-                var hint = document.getElementById('audience-hint');
-                if (hint) { hint.style.color = ''; }
-            });
-        });
 
         var cancel = document.getElementById('cancel-btn');
         if (cancel) {
@@ -300,13 +261,12 @@
                 if (!audience.length) {
                     var select = audienceSelect();
                     var hint = document.getElementById('audience-hint');
-                    var picking = select && select.value === 'Specific Departments';
                     if (select) { select.style.borderColor = '#C0392B'; }
                     if (hint) {
                         hint.style.color = '#C0392B';
-                        hint.textContent = picking ? 'Select at least one department.' : 'Select a target audience.';
+                        hint.textContent = 'Select a target audience.';
                     }
-                    showToast(picking ? 'Select at least one department.' : 'Select a target audience.', 'error');
+                    showToast('Select a target audience.', 'error');
                     return;
                 }
 
